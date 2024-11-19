@@ -1,5 +1,15 @@
 <?php
+$current_page = basename($_SERVER['PHP_SELF']);
+if($current_page === 'install.php') {
+    return; 
+}
 
+// Check if constants.php exists
+if (!file_exists('constants.php')) {
+    echo "<script>alert('Database not configured. Redirecting to installation page...');";
+    echo "window.location.href = 'install.php';</script>";
+    exit();
+}
 
 require_once 'constants.php';
 
