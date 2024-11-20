@@ -30,13 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 // Select the database
                 mysqli_select_db($test_conn, $db_name);
-                
                 // Create users table
                 $sql = "CREATE TABLE IF NOT EXISTS users (
                     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                     username VARCHAR(50) NOT NULL UNIQUE,
                     password VARCHAR(255) NOT NULL,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    profile_image VARCHAR(255) DEFAULT NULL
+
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
                 
                 if (mysqli_query($test_conn, $sql)) {
